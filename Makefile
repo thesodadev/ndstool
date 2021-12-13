@@ -23,7 +23,7 @@ $(BIN_NAME): $(OBJ_FILES)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # General rules
-.PHONY: all clean rebuild
+.PHONY: all clean rebuild install
 
 all: $(BIN_NAME)
 
@@ -31,3 +31,8 @@ clean:
 	rm -rf $(OBJ_FILES) $(BIN_NAME)
 
 rebuild: clean all
+
+PREFIX ?= /usr/local
+install: $(BIN_NAME)
+	install -d $(DESTDIR)$(PREFIX)/bin/
+	install -m 755 $(BIN_NAME) $(DESTDIR)$(PREFIX)/bin/
