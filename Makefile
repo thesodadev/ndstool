@@ -36,3 +36,5 @@ PREFIX ?= /usr/local
 install: $(BIN_NAME)
 	install -d $(DESTDIR)$(PREFIX)/bin/
 	install -m 755 $(BIN_NAME) $(DESTDIR)$(PREFIX)/bin/
+	install -d $(DESTDIR)/opt/nds
+	install -m 644 arm7_default.elf $(DESTDIR)/opt/nds
